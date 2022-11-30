@@ -8,7 +8,7 @@ class TopController < ApplicationController
   end
 
   def login
-    user=User.find_by(uid: params[:uid])
+    user=User.find_by(uid: params[:uid], pass: params[:pass])
     if user
       login_password = BCrypt::Password.new(user.pass)
       if login_password == params[:pass]
