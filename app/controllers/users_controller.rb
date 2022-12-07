@@ -9,17 +9,17 @@ class UsersController < ApplicationController
     end
     
     def create
-        user = User.new(uid: params[:user][:uid], password: params[:user][:password])
-        if user.save
-            redirect_to users_path
-        else
-            render new_user_path
-        end
+        user1 = User.new(uid: params[:user][:uid], password_digest: params[:user][:password_digest])
+        user1.save
+        render "login"
     end
     
-    def destroy
-        user = User.find(params[:id])
-        user.destroy
-        redirect_to users_path
+    def login
+        user2=User.find_by(uid: params[:uid], password_digest: params[:password_digest])
+        if user2
+            redirect_to main_tops_path
+        else
+            render 'login'
+        end
     end
 end
