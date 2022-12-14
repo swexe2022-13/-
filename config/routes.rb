@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'infras/index'
+  get 'sis/index'
+  get 'webs/index'
+  get 'hardwares/index'
+  get 'softwares/index'
   root 'users#index'
   
   resources :users do
