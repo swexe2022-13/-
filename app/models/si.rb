@@ -1,0 +1,2 @@
+class Si < ApplicationRecord
+end
